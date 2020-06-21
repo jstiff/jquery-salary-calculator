@@ -1,26 +1,33 @@
 $(document).ready(onReady);
 function onReady() {
+  let i = 1;
   let totalCost = 0;
   let maxCost = 20000;
+  let collection = [];
   $("#newEmployeeBtn").on("click", addEmployee);
   function addEmployee() {
-    let userFirstName = $("#firstNameInput").val();
-    let userLastName = $("#lastNameInput").val();
-    let userId = $("#idInput").val();
-    let userTitle = $("#titleInput").val();
-    let userSalary = $("#salaryInput").val();
+    let newObj = {
+      userFirstName: $("#firstNameInput").val(),
+      userLastName: $("#lastNameInput").val(),
+      userId: $("#idInput").val(),
+      userTitle: $("#titleInput").val(),
+      userSalary: $("#salaryInput").val(),
+    };
 
     let newEmployee = `<tr id="ne">
-  <td>${userFirstName}</td>
-  <td>${userLastName}</td>
-  <td>${userId}</td>
-  <td>${userTitle}</td>
-  <td id="salary"><span>$</span>${userSalary}</td>
+  <td>${newObj.userFirstName}</td>
+  <td>${newObj.userLastName}</td>
+  <td>${newObj.userId}</td>
+  <td>${newObj.userTitle}</td>
+  <td id="salary"><span>$</span>${newObj.userSalary}</td>
   <td><button id="deleteBtn">Delete</button></td>
 </tr>`;
     $("#tableBody").append(newEmployee);
+    $("#deleteBtn").data("salary", newObj.userSalary);
+    collection.push(newObj);
+
     $('section input[type="text"]').val("");
-    totalCost = totalCost + parseInt(userSalary);
+    totalCost = totalCost + parseInt(newObj.userSalary);
     $("#cost").text(parseInt(totalCost));
     if (totalCost >= maxCost) {
       $("#cost").css("background-color", "red");
@@ -30,11 +37,11 @@ function onReady() {
   }
 
   $("#tableBody").on("click", "#deleteBtn", deleteEmployee);
-  function deleteEmployee(event) {
-    console.log("delete btn works");
-    let poop = $(this).closest("#salary");
-    $(this).closest("tr").remove();
+  function deleteEmployee() {
+    let value = $(this).data("salary");
+    console.log(parseInt(value));
 
-    console.log(poop);
+    $("#cost").text(totalCost);
+    $(this).closest("tr").remove();
   }
 }
