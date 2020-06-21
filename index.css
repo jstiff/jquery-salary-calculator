@@ -1,5 +1,5 @@
 table th {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 4px;
   font-size: 1.5em;
 }
@@ -9,8 +9,9 @@ table td {
   font-size: 1.5em;
   text-align: center;
 }
+
 header {
-  background-color: rgb(140, 203, 214);
+  background-color: rgb(83, 86, 90);
   padding-top: 20px;
   padding-bottom: 30px;
   text-align: center;
@@ -18,22 +19,24 @@ header {
 header h1 {
   font-weight: 400;
   font-family: monospace;
+  color: whitesmoke;
 }
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(224, 231, 238);
+  background-color: rgb(212, 215, 218);
 }
 section {
   padding-top: 15px;
   padding-bottom: 25px;
   justify-content: space-evenly;
+  text-align: center;
 }
 section h2 {
   margin-left: 30px;
 }
 section input {
-  margin-left: 25px;
+  margin-left: 5px;
   font-size: 20px;
 }
 section button {
@@ -44,6 +47,7 @@ section button {
 }
 #table {
   width: 90%;
+  padding-bottom: 20px;
   border: 1px solid black;
   margin: 50px auto;
 }
