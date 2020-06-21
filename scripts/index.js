@@ -10,13 +10,20 @@ function addEmployee() {
   let userTitle = $("#titleInput").val();
   let userSalary = $("#salaryInput").val();
 
-  let newEmployee = `<tr>
+  let newEmployee = `<tr id="ne">
   <td>${userFirstName}</td>
   <td>${userLastName}</td>
   <td>${userId}</td>
   <td>${userTitle}</td>
   <td><span>$</span>${userSalary}</td>
+  <td><button id="deleteBtn">Delete</button></td>
 </tr>`;
   $("#tableBody").append(newEmployee);
   $('section input[type="text"]').val("");
+}
+
+$("#tableBody").on("click", "#deleteBtn", deleteEmployee);
+function deleteEmployee(event) {
+  console.log("delete btn works");
+  $(this).closest("tr").remove();
 }
