@@ -27,7 +27,7 @@ function onReady() {
     collection.push(newObj);
 
     $('section input[type="text"]').val("");
-    totalCost = totalCost + parseInt(newObj.userSalary);
+    totalCost = totalCost + parseInt(newObj.userSalary) / 12;
     $("#cost").text(parseInt(totalCost));
     if (totalCost >= maxCost) {
       $("#cost").css("background-color", "red");
@@ -39,7 +39,7 @@ function onReady() {
   $("#tableBody").on("click", "#deleteBtn", deleteEmployee);
   function deleteEmployee() {
     let value = $(this).data("salary");
-    totalCost -= value;
+    totalCost -= value / 12;
 
     $("#cost").text(totalCost);
     $(this).closest("tr").remove();
