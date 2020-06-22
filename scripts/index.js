@@ -20,7 +20,7 @@ function onReady() {
   <td>${newObj.userId}</td>
   <td>${newObj.userTitle}</td>
   <td id="salary"><span>$</span>${newObj.userSalary}</td>
-  <td><button id="deleteBtn">Delete</button></td>
+  <td><button id="deleteBtn" data-salary=${newObj.userSalary}>Delete</button></td>
 </tr>`;
     $("#tableBody").append(newEmployee);
     $("#deleteBtn").data("salary", newObj.userSalary);
@@ -39,7 +39,7 @@ function onReady() {
   $("#tableBody").on("click", "#deleteBtn", deleteEmployee);
   function deleteEmployee() {
     let value = $(this).data("salary");
-    console.log(parseInt(value));
+    totalCost -= value;
 
     $("#cost").text(totalCost);
     $(this).closest("tr").remove();
